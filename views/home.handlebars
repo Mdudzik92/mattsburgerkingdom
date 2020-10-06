@@ -1,1 +1,28 @@
-<h1>Example App: Home</h1>
+<h1>Matt's Burger Kingdom</h1>
+<div class="row">
+    <div class="col-6">
+        <ul>
+            {{#each burgerdata}}
+            {{#if this.devoured}}
+            <li>
+                {{this.burger_name}}
+            </li>
+            {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+    <div class="col-6">
+        <ul>
+            {{#each burgerdata}}
+            {{#unless this.devoured}}
+            <li>
+                {{this.burger_name}}
+            </li>
+            {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
+</div>
+
+
+click on a burger so that it switches from not devoured to devoured
