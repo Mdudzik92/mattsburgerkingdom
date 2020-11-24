@@ -4,7 +4,7 @@
         <ul>
             {{#each burgerdata}}
             {{#if this.devoured}}
-            <li>
+            <li class="burger" data-id="{{this.id}}">
                 {{this.burger_name}}
             </li>
             {{/if}}
@@ -15,7 +15,7 @@
         <ul>
             {{#each burgerdata}}
             {{#unless this.devoured}}
-            <li>
+            <li class="burgername">
                 {{this.burger_name}}
             </li>
             {{/unless}}
