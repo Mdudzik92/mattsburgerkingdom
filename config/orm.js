@@ -1,39 +1,74 @@
-const { query } = require("express");
-var connection = require("./connection")
+var connection = require("./connection.js");
+
 var orm = {
-    selectAll: function(tablename, cb){
-        connection.query('select * from ' + tablename, function (error, results, fields) {
-            if (error) throw error;
-            console.log(results);
-            cb(results)
-          });
+    select: function (tableName, cb) {
+        var queryString = "SELECT * FROM " + tableName + ";"; 
+        connection.query(queryString, function (error, results) {
+            if (error) {
+                throw error;
+            }
+            cb(results);
+        });
     },
-    insertOne: function(tablename, cols, vals, cb){
-        connection.query(
-            'insert into ' + tablename + "(" + cols.join(",") + ") values (" + vals.burger_name + "," + vals.devoured + ")", function (error, results, fields) {
-            if (error) throw error;
-            console.log(results);
-            cb(results)
-          });
+    insert: function (tableName, cols, vals, cb) {
+        var queryString = "INSERT INTO " + tableName;
+
+        queryString += " (";
+        queryString += cols.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += printQuestionMarks(vals.length);
+        queryString += ") ";
+
+        console.log(queryString);
+
+        connection.query(queryString, vals, function(error, result) {
+            if (error) {
+                throw error;
+            }
+
+            cb(result);
+        },
+            'insert into ' + tableName + "(" + cols.join(",") + ") values (" + vals.burger_name + "," + vals.devoured + ")", function (error, results) {
+                if (error) throw error;
+                console.log(results);
+                cb(results)
+            });
     },
-    updateOne: function(tablename, cols, condition, cb){
-        var queryString = "update " + tablename
-        queryString += " set "
-        queryString += objectToSequel(cols)
-        queryString += " where " 
-        queryString += condition
-        console.log(queryString)
-        connection.query(queryString, function(error, results){
-            if (error) throw error;
-            cb(results)
-        })
+    update: function (tableName, cols, condition, cb) {
+        var queryString = "UPDATE " + tableName;
+
+        queryString += " SET ";
+        queryString += objectToSequel(cols);
+        queryString += " WHERE ";
+        queryString += condition;
+        console.log(queryString);
+        connection.query(queryString, function (error, result) {
+            if (error) {
+              throw error;
+            }
+
+            cb(result);
+        });
     }
-}
-function objectToSequel(cols){
+};
+
+function objectToSequel(cols) {
     var array = [];
-    for (var key in cols){
-        array.push(key + "=" + cols[key])
+    for (var key in cols) {
+        var value = cols[key];
+
+        if (Object.hasOwnProperty.call(cols, key)) {
+            if (typeof value === "string" && value.indexOf(" ") >= 0) {
+                value = "'" + value + "'";
+            }
+            array.push(key + "=" + value);
+        }
+
+        array.push(key + "=" + value);
     }
-    return array.toString()
-}
-module.exports = orm
+
+return array.toString();
+};
+
+module.exports = orm;
