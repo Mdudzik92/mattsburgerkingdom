@@ -1,4 +1,4 @@
-INSERT INTO burgers(name, devoured) 
+INSERT INTO burgers(name, devoured, menu) 
 VALUES("cheeseburger", false), ("veggie burger", true);
 
 -- INSERT INTO cats (name) VALUES ('Meeses');
