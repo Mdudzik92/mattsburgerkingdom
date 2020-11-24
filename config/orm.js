@@ -1,5 +1,33 @@
 var connection = require("./connection.js");
 
+function printQuestionMarks(num) {
+    var arr = [];
+  
+    for (var i = 0; i < num; i++) {
+      arr.push("?");
+    }
+  
+    return arr.toString();
+  }
+
+function objectToSequel(cols) {
+    var array = [];
+    for (var key in cols) {
+        var value = cols[key];
+
+        if (Object.hasOwnProperty.call(cols, key)) {
+            if (typeof value === "string" && value.indexOf(" ") >= 0) {
+                value = "'" + value + "'";
+            }
+            array.push(key + "=" + value);
+        }
+
+        array.push(key + "=" + value);
+    }
+
+return array.toString();
+};
+
 var orm = {
     select: function (tableName, cb) {
         var queryString = "SELECT * FROM " + tableName + ";"; 
@@ -51,24 +79,6 @@ var orm = {
             cb(result);
         });
     }
-};
-
-function objectToSequel(cols) {
-    var array = [];
-    for (var key in cols) {
-        var value = cols[key];
-
-        if (Object.hasOwnProperty.call(cols, key)) {
-            if (typeof value === "string" && value.indexOf(" ") >= 0) {
-                value = "'" + value + "'";
-            }
-            array.push(key + "=" + value);
-        }
-
-        array.push(key + "=" + value);
-    }
-
-return array.toString();
 };
 
 module.exports = orm;
