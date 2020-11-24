@@ -10,11 +10,6 @@
               {{> burgers/burger-block devoured=true}}
             {{/unless}}
           {{/each}}
-            {{!-- <li class="burgername">
-                {{this.burger_name}}
-            </li>
-            {{/unless}}
-            {{/each}} --}}
         </ul>
     </div>
 
@@ -24,10 +19,6 @@
           {{#each burger}}
             {{#if devoured}}
               {{> burgers/burger-block devoured=false}}
-
-            {{!-- <li class="burger" data-id="{{this.id}}">
-                {{this.burger_name}}
-            </li> --}}
             {{/if}}
           {{/each}}
         </ul>
