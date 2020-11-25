@@ -41,14 +41,18 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: fit-content;
+    /* width: fit-content; */
     text-align: center;
     padding: 5px;
     margin: 5px;
     font-family: Arial, sans-serif;
     color: white;
     text-shadow: 2px 2px black;
-    background: brown;
+    /* background: brown; */
+  }
+
+  span {
+    background-color: brown;
   }
   
   .label {
