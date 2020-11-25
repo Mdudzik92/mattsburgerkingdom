@@ -6,7 +6,6 @@ function printQuestionMarks(num) {
     for (var i = 0; i < num; i++) {
       arr.push("?");
     }
-  
     return arr.toString();
   }
 
@@ -30,11 +29,11 @@ return arr.toString();
 var orm = {
     all: function (tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";"; 
-        connection.query(queryString, function (err, result) {
+        connection.query(queryString, function (err, results) {
             if (err) {
                 throw err;
             }
-            cb(result);
+            cb(results);
         });
     },
     create: function (table, cols, vals, cb) {
@@ -49,12 +48,11 @@ var orm = {
 
         console.log(queryString);
 
-        connection.query(queryString, vals, function(err, result) {
+        connection.query(queryString, vals, function (err, results) {
             if (err) {
                 throw err;
             }
-
-            cb(result);
+            cb(results);
         });
     },
 
@@ -67,12 +65,12 @@ var orm = {
         queryString += condition;
 
         console.log(queryString);
-        connection.query(queryString, function (err, result) {
+        connection.query(queryString, function (err, results) {
             if (err) {
               throw err;
             }
 
-            cb(result);
+            cb(results);
         });
     },
 
@@ -81,7 +79,7 @@ var orm = {
         queryString += " WHERE ";
         queryString += condition;
     
-        connection.query(queryString, function(err, result) {
+        connection.query(queryString, function (err, result) {
           if (err) {
             throw err;
           }
