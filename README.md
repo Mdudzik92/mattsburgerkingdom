@@ -1,7 +1,7 @@
-* Matt's Burger Kingdom
+Matt's Burger Kingdom
 
 <!-- Live link to deployed app -->
-Repository: https://github.com/Mdudzik92/mattsburgerkingdom/
+Repository: https://github.com/Mdudzik92/mattsburgerkingdom/ <br>
 Deployed app: https://mdudzik92.github.io/mattsburgerkingdom/
 
 <!-- Technologies used -->
