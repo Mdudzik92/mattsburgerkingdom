@@ -3,7 +3,7 @@ var mysql = require('mysql');
 if (process.env.Jaws_DB) {
   connection = mysql.createConnection(process.env.Jaws_DB)
 } else {
-  var connection = mysql.createConnection({
+  connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : 'password',
