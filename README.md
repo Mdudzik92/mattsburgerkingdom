@@ -2,7 +2,7 @@ Matt's Burger Kingdom
 
 <!-- Live link to deployed app -->
 Repository: https://github.com/Mdudzik92/mattsburgerkingdom/ <br>
-Deployed app: https://mdudzik92.github.io/mattsburgerkingdom/
+Deployed app: https://mattsburgerkingdom.herokuapp.com/
 
 <!-- Technologies used -->
 JavaScript, MySQL, Node, Express, Handlebars and a homemade ORM
